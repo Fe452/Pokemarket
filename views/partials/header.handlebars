@@ -1,0 +1,45 @@
+<header class="bg-white border-b border-slate-100 px-6 py-3 flex items-center justify-between shrink-0">
+    <div class="flex items-center gap-3">
+        <div class="w-8 h-8 bg-[#e11d48] rounded-full border-2 border-slate-800 relative flex items-center justify-center shadow-sm">
+            <div class="w-full h-0.5 bg-slate-800 absolute"></div>
+            <div class="w-2 h-2 bg-white border-2 border-slate-800 rounded-full z-10"></div>
+        </div>
+        <div>
+            <h1 class="text-sm font-black text-slate-800 tracking-tight">PokeMarket</h1>
+            <p class="text-[10px] text-slate-400 font-semibold tracking-wide">HUB CORPORATIVO DE ESPÉCIES</p>
+        </div>
+    </div>
+
+    <nav id="main-nav" class="flex gap-1 bg-slate-100 p-1 rounded-xl border">
+        <a href="/pokemon" class="nav-btn {{#if (eq activePage 'inventario')}}active{{/if}} flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition">
+            📦 Vitrine Comercial
+        </a>
+        {{#if (eq user.role 'Administrador')}}
+            <a href="/pokemon/gerenciar" class="nav-btn {{#if (eq activePage 'gerenciar')}}active{{/if}} flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition">
+                ⚙️ Gestão de Lotes
+            </a>
+            <a href="/compras/historico" class="nav-btn {{#if (eq activePage 'pedidos')}}active{{/if}} flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition">
+                🧾 Faturamento
+            </a>
+        {{/if}}
+        <a href="/compras/historico" class="nav-btn {{#if (eq activePage 'compras-cliente')}}active{{/if}} flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition">
+            🛍️ Minhas Compras
+        </a>
+        <a href="/users/configuracoes" class="nav-btn {{#if (eq activePage 'configuracoes')}}active{{/if}} flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition">
+            👤 Configurações
+        </a>
+    </nav>
+
+    <div class="flex items-center gap-4">
+        <div class="text-right">
+            <p class="text-xs font-black text-slate-700">{{user.name}}</p>
+            <span class="text-[9px] text-emerald-500 font-bold bg-emerald-50 px-1.5 py-0.2 rounded border border-emerald-200">Online</span>
+        </div>
+        <a href="/compras/carrinho" id="cart-btn" class="relative bg-slate-100 hover:bg-slate-200 p-2 rounded-xl transition border text-slate-600">
+            🛒 <span id="cart-badge" class="absolute -top-1.5 -right-1.5 bg-rose-500 text-white font-bold text-[9px] w-4 h-4 rounded-full flex items-center justify-center shadow-md">{{cartCount}}</span>
+        </a>
+        <a href="/auth/logout" class="text-xs font-bold text-rose-500 hover:text-rose-700 transition px-2 py-1 bg-rose-50 rounded-lg border border-rose-100">
+            Sair
+        </a>
+    </div>
+</header>

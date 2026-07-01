@@ -1,0 +1,47 @@
+<div class="space-y-4">
+    <div class="flex items-center justify-between">
+        <div>
+            <h2 class="text-lg font-black text-slate-800 tracking-tight">Painel Administrativo de Stocks</h2>
+        </div>
+        <button id="btn-open-add-modal" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2 rounded-xl transition shadow-md">
+            + Adicionar Novo Lote
+        </button>
+    </div>
+    <div class="bg-white border rounded-2xl overflow-hidden shadow-sm">
+        <table class="w-full text-left text-xs">
+            <thead class="bg-slate-50 border-b font-bold text-slate-500 uppercase tracking-wider">
+                <tr>
+                    <th class="p-4">Registo</th>
+                    <th class="p-4">Ícone</th>
+                    <th class="p-4">Espécie</th>
+                    <th class="p-4">Tipo</th>
+                    <th class="p-4">Preço Base</th>
+                    <th class="p-4">Stock</th>
+                    <th class="p-4 text-center">Ações</th>
+                </tr>
+            </thead>
+            <tbody id="crud-table-body">
+                {{#each pokemons}}
+                <tr data-pokemon-id="{{this.pokemon_id}}" data-name="{{this.nome_pokemon}}" data-type="{{this.tipos}}" data-price="{{this.preco}}" data-stock="{{this.estoque}}" data-description="{{this.descricao}}" class="border-b border-slate-100 hover:bg-slate-50 transition">
+                    <td class="p-4 font-mono text-slate-400">#{{padString this.pokemon_id 3 '0'}}</td>
+                    <td class="p-4"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{this.pokemon_id}}.png" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{this.pokemon_id}}.png'" class="w-8 h-8 object-contain bg-slate-50 border rounded-lg"></td>
+                    <td class="p-4 font-bold text-slate-700">{{this.nome_pokemon}}</td>
+                    <td class="p-4">
+    <div class="flex gap-1">
+        {{#each this.tipos_array}}
+            <span class="type-badge type-{{this}}">{{this}}</span>
+        {{/each}}
+    </div>
+</td>
+                    <td class="p-4 font-medium text-slate-900">R$ {{ this.preco}}</td>
+                    <td class="p-4 font-bold text-slate-500">{{this.estoque}} un</td>
+                    <td class="p-4 text-center space-x-2">
+                        <button onclick="openEditModal({{this.pokemon_id}})" class="text-blue-500 hover:text-blue-700 font-bold">Editar</button>
+                        <button onclick="deletePokemon({{this.pokemon_id}})" class="text-rose-500 hover:text-rose-700 font-bold">Liquidar</button>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

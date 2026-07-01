@@ -1,0 +1,167 @@
+/* Definições tipográficas padrão */
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Fundo do ecossistema corporativo */
+.app-background {
+    background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1920');
+    background-size: cover;
+    background-position: center;
+    background-color: #e2e8f0;
+}
+
+/* Sidebar lateral direita escura conforme a imagem de referência */
+.dark-pokedex-sidebar {
+    background-color: #111026 !important;
+}
+
+/* Customização fina de barras de rolagem */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+/* Animação suave para as imagens dos Pokémon */
+.pokemon-bounce {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+/* Estados e efeitos dinâmicos de botões de menu */
+.nav-btn {
+    color: #64748b;
+}
+.nav-btn:hover {
+    color: #334155;
+    background-color: #f1f5f9;
+}
+.nav-btn.active {
+    color: #e11d48;
+    background-color: #fff1f2;
+}
+
+/* Badges de tipos flexíveis para suportar os Emojis alinhados */
+.type-badge {
+    padding: 2px 10px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 10px;
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Cores proprietárias para cada ecossistema elemental */
+.type-Normal { background-color: #a8a29e; }
+.type-Fogo { background-color: #f97316; }
+.type-Água { background-color: #3b82f6; }
+.type-Planta { background-color: #10b981; }
+.type-Elétrico { background-color: #eab308; }
+.type-Psíquico { background-color: #ec4899; }
+.type-Venenoso { background-color: #6366f1; }
+.type-Voador { background-color: #818cf8; }
+.type-Inseto { background-color: #a3e635; }
+.type-Terra { background-color: #ca8a04; }
+.type-Pedra { background-color: #78716c; }
+.type-Lutador { background-color: #dc2626; }
+.type-Fantasma { background-color: #a855f7; }
+.type-Gelo { background-color: #22d3ee; }
+.type-Dragão { background-color: #4f46e5; }
+.type-Sombrio { background-color: #44403c; }
+.type-Aço { background-color: #94a3b8; }
+.type-Fada { background-color: #f472b6; }
+
+/* ============================================
+   MELHORIAS PARA BUSCA POR NOME
+   ============================================ */
+
+/* Container da busca aprimorada */
+.search-container {
+    position: relative;
+}
+
+.search-container .search-input {
+    padding-left: 2.5rem;
+}
+
+.search-container .search-icon {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+}
+
+/* Sugestões de busca */
+.search-suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    margin-top: 0.25rem;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 50;
+    display: none;
+}
+
+.search-suggestions.active {
+    display: block;
+}
+
+.search-suggestions .suggestion-item {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    transition: background 0.15s;
+}
+
+.search-suggestions .suggestion-item:hover {
+    background: #f1f5f9;
+}
+
+.search-suggestions .suggestion-item img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+/* Imagens de Pokémon com fallback */
+.pokemon-image {
+    transition: transform 0.3s ease;
+}
+
+.pokemon-image:hover {
+    transform: scale(1.05);
+}
+
+/* Badge de estoque baixo */
+.stock-warning {
+    color: #dc2626;
+    font-weight: 700;
+}
+
+.stock-normal {
+    color: #22c55e;
+    font-weight: 700;
+}

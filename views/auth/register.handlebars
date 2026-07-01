@@ -1,0 +1,52 @@
+<div class="w-full max-w-md bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden p-8 flex flex-col items-center">
+    <div class="w-16 h-16 bg-slate-800 rounded-full border-4 border-[#e11d48] relative flex items-center justify-center shadow-md mb-4">
+        <span class="text-2xl">✨</span>
+    </div>
+    <h2 class="text-2xl font-black text-slate-800 tracking-tight text-center">Criar Conta</h2>
+    <p class="text-xs text-slate-400 mt-1 mb-6 text-center">Preencha os dados para se cadastrar no sistema</p>
+
+    {{#if error}}
+    <div class="w-full bg-rose-50 border border-rose-200 text-rose-600 px-4 py-2 rounded-lg text-xs font-bold mb-4">
+        {{error}}
+    </div>
+    {{/if}}
+
+    <form action="/auth/register" method="POST" class="w-full space-y-4">
+        <div>
+            <label class="block text-xs font-bold text-slate-500 mb-1">Nome Completo *</label>
+            <input type="text" name="nome_cliente" required placeholder="Ex: Brock Pewter" 
+                   class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-slate-500 transition">
+        </div>
+        <div>
+            <label class="block text-xs font-bold text-slate-500 mb-1">E-mail *</label>
+            <input type="email" name="email" required placeholder="exemplo@pokemarket.com" 
+                   class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-slate-500 transition">
+        </div>
+        <div>
+            <label class="block text-xs font-bold text-slate-500 mb-1">CPF *</label>
+            <input type="text" name="cpf" required placeholder="111.111.111-11" 
+                   class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-slate-500 transition">
+        </div>
+        <div>
+            <label class="block text-xs font-bold text-slate-500 mb-1">Telefone</label>
+            <input type="text" name="telefone" placeholder="11999999999" 
+                   class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-slate-500 transition">
+        </div>
+        <div>
+            <label class="block text-xs font-bold text-slate-500 mb-1">Senha *</label>
+            <input type="password" name="senha" required placeholder="Crie uma senha" 
+                   class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-slate-500 transition">
+        </div>
+        <div>
+            <label class="block text-xs font-bold text-slate-500 mb-1">Confirmar Senha *</label>
+            <input type="password" name="confirmar_senha" required placeholder="Repita a senha" 
+                   class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-slate-500 transition">
+        </div>
+        <button type="submit" class="w-full bg-slate-800 text-white font-bold py-2 rounded-lg hover:bg-slate-900 transition">
+            Cadastrar
+        </button>
+        <a href="/auth/login" class="block text-center border border-slate-200 text-slate-500 font-bold py-2 rounded-lg hover:bg-slate-50 transition text-sm">
+            ← Voltar ao Login
+        </a>
+    </form>
+</div>

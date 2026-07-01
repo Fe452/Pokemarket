@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="app-background p-4 min-h-screen flex items-center justify-center">
+
+    {{#if user}}
+        <!-- Layout com header e sidebar quando logado -->
+        <div id="main-app" class="w-full max-w-[1280px] bg-[#f8fafc] rounded-2xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col h-[850px]">
+            {{> header}}
+            <div class="flex flex-1 overflow-hidden relative">
+                {{> sidebar}}
+                <main class="flex-1 bg-slate-50/50 p-6 overflow-y-auto custom-scrollbar">
+                    {{{body}}}
+                </main>
+                <aside id="details-sidebar" class="w-80 dark-pokedex-sidebar p-5 flex flex-col justify-between shrink-0 hidden text-white border-l border-indigo-950">
+                    <!-- Preenchido via JavaScript -->
+                </aside>
+            </div>
+        </div>
+    {{else}}
+        <!-- Layout sem header/sidebar para login/registro -->
+        <div class="w-full flex items-center justify-center">
+            {{{body}}}
+        </div>
+    {{/if}}
+
+    <script src="/js/app.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/cart.js"></script>
+    <script src="/js/crud.js"></script>
+</body>
+</html>

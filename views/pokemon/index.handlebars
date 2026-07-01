@@ -1,0 +1,51 @@
+<div class="space-y-4">
+    <div class="flex items-center justify-between">
+        <div>
+            <h2 class="text-lg font-black text-slate-800 tracking-tight">Vitrine Comercial <span id="category-qty" class="text-slate-400 font-semibold text-xs">({{pokemons.length}} lotes encontrados)</span></h2>
+        </div>
+        <form action="/pokemon" method="GET" class="flex gap-2">
+            <input type="text" name="search" placeholder="Pesquisar espécie ou tipo..." value="{{searchQuery}}" class="px-3 py-1.5 text-xs bg-white border rounded-xl w-52 focus:outline-none focus:border-rose-400 shadow-sm transition">
+            
+            <select name="sort" class="px-3 py-1.5 text-xs bg-white border rounded-xl focus:outline-none focus:border-rose-400 shadow-sm text-slate-600 font-medium">
+                <option value="id-asc" {{#if (eq sortBy 'id-asc')}}selected{{/if}}>ID (Menor - Maior)</option>
+                <option value="id-desc" {{#if (eq sortBy 'id-desc')}}selected{{/if}}>ID (Maior - Menor)</option>
+                <option value="name-asc" {{#if (eq sortBy 'name-asc')}}selected{{/if}}>Ordem (A-Z)</option>
+                <option value="name-desc" {{#if (eq sortBy 'name-desc')}}selected{{/if}}>Ordem (Z-A)</option>
+                <option value="price-asc" {{#if (eq sortBy 'price-asc')}}selected{{/if}}>Preço: Menor - Maior</option>
+                <option value="price-desc" {{#if (eq sortBy 'price-desc')}}selected{{/if}}>Preço: Maior - Menor</option>
+            </select>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white text-xs font-bold px-4 py-1.5 rounded-xl transition">Filtrar</button>
+        </form>
+    </div>
+
+    <div id="pokemon-grid" class="grid grid-cols-3 gap-4">
+        {{#each pokemons}}
+            <div onclick="showDetails({{this.pokemon_id}})" class="bg-white border border-slate-100 rounded-2xl p-4 shadow-sm hover:shadow-md transition cursor-pointer flex flex-col justify-between h-56 group">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <span class="text-[10px] text-slate-400 font-mono font-bold">#{{padString this.pokemon_id 3 '0'}}</span>
+                        <h3 class="text-sm font-black text-slate-800 tracking-tight mt-0.5 group-hover:text-rose-500 transition">{{this.nome_pokemon}}</h3>
+                    </div>
+
+                    <div class="flex gap-1">
+    {{#each this.tipos_array}}
+        <span class="type-badge type-{{this}}">{{this}}</span>
+    {{/each}}
+</div>
+                    
+                </div>
+                <div class="flex justify-center my-1">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{this.numero_pokedex}}.png" 
+                         onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{this.numero_pokedex}}.png'"
+                         class="w-24 h-24 object-contain transition group-hover:scale-110">
+                </div>
+                <div class="flex justify-between items-end border-t pt-2">
+                    <div><p class="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Valor Lote</p><span class="text-xs font-black text-slate-800">R$ {{this.preco}}</span></div>
+                    <div class="text-right"><p class="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Disponível</p><span class="text-xs font-bold text-slate-500">{{this.estoque}} un</span></div>
+                </div>
+            </div>
+        {{else}}
+            <div class="col-span-3 text-center py-12 text-slate-500 font-medium">Nenhum Pokémon encontrado</div>
+        {{/each}}
+    </div>
+</div>

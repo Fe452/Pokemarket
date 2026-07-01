@@ -1,0 +1,21 @@
+<aside id="app-sidebar" class="w-60 bg-white border-r border-slate-100 p-4 flex flex-col justify-between shrink-0">
+    <div class="space-y-4 overflow-y-auto custom-scrollbar pr-1">
+        <div>
+            <h3 class="text-[10px] font-bold text-slate-400 tracking-wider uppercase mb-2">Filtragem por Ecossistema</h3>
+            <div id="category-list" class="space-y-1">
+                {{#each tipos}}
+                    <a href="/pokemon?type={{this}}" class="w-full flex items-center justify-between px-3 py-2 text-xs font-semibold rounded-xl text-slate-600 hover:bg-slate-100 transition">
+                        <span> {{this}}</span>
+                    </a>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+    <div class="bg-slate-50 border border-slate-100 rounded-xl p-3.5 mt-4">
+        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Volume Global Armazenado</p>
+        <div class="flex items-baseline gap-1.5">
+            <span id="total-stock-counter" class="text-2xl font-black text-slate-800">{{totalStock}}</span>
+            <span class="text-[10px] text-slate-500 font-bold">unidades</span>
+        </div>
+    </div>
+</aside>

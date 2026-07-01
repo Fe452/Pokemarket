@@ -1,0 +1,33 @@
+<div class="space-y-4">
+    <h2 class="text-lg font-black text-slate-800 tracking-tight">
+        {{#if isAdmin}}Faturamento e Distribuição{{else}}Minhas Compras{{/if}}
+    </h2>
+    <div class="bg-white border rounded-2xl overflow-hidden shadow-sm">
+        <table class="w-full text-left text-xs">
+            <thead class="bg-slate-50 border-b font-bold text-slate-500 uppercase tracking-wider">
+                <tr>
+                    <th class="p-4">Código único</th>
+                    {{#if isAdmin}}<th class="p-4">Operador Comprador</th>{{/if}}
+                    <th class="p-4">Itens Remetidos</th>
+                    <th class="p-4">Data Fiscal</th>
+                    <th class="p-4">Total Faturado</th>
+                    <th class="p-4">Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each compras}}
+                <tr class="border-b hover:bg-slate-50 text-slate-700 font-medium text-xs">
+                    <td class="p-4 font-mono font-bold text-slate-900">PK-{{this.nf_id}}</td>
+                    {{#if ../isAdmin}}<td class="p-4 font-black">{{this.nome_cliente}}</td>{{/if}}
+                    <td class="p-4 text-slate-500 max-w-[250px] truncate" title="{{this.itens}}">{{this.itens}}</td>
+                    <td class="p-4 text-slate-400">{{formatDate this.data_compra}}</td>
+                    <td class="p-4 font-black text-emerald-600">R$ {{ this.total}}</td>
+                    <td class="p-4"><span class="bg-emerald-100 text-emerald-700 font-bold px-2 py-0.5 rounded text-[10px]">📦 ENVIADO</span></td>
+                </tr>
+                {{else}}
+                <tr><td colspan="{{#if ../isAdmin}}6{{else}}5{{/if}}" class="p-8 text-center text-slate-400">Nenhuma compra realizada ainda.</td></tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
